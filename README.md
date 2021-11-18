@@ -19,21 +19,21 @@ Your task is to implement a Linux service that maintains a single current count 
 
 * Listen for count commands on TCP/IP socket port 8089.
 * Command structures are ascii strings followed by CRLF
-** Example: INCR 5\r\n
+  * Example: INCR 5\r\n
 * The following counting commands are required:
-** 'INCR <integer>' : Increment the current count by integer amount
-** 'DECR <integer>' : Decrement the current count by integer amount
-** 'OUTPUT' : Write the current count as an ascii string to the socket which requested it.
-* For every count change, the current count should be written to every active connection.
+  * 'INCR <integer>' : Increment the current count by integer amount
+  * 'DECR <integer>' : Decrement the current count by integer amount
+  * 'OUTPUT' : Write the current count as an ascii string to the socket which requested it.
+* For every count change, the current count should be written to each active connection.
 * If the service receives a SIGTERM, it shall shutdown all of it's connections and exit with a 0 status code.
 * Do NOT use 3rd party libraries like boost for this assignment
 * The service shall be single threaded and support up to 1024 connections.  (hint use epoll or select for asyncio).
 
 ### Systemd Requirements
 
-* *Explain* (no need to implement this) how this service could be integrated with systemd so that it will:
-** Be restarted after a crash
-** All output to stdio will be sent to the journal
+* *Explain* (no need to implement) how this service could be integrated with systemd so that it will:
+  * Be restarted after a crash
+  * All output to stderr will be sent to the journal
 
 ### Building
 
